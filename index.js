@@ -1,8 +1,7 @@
 'use strict';
 var exec = require('child_process').exec;
 var semverValid = require('semver').valid;
-var regex = /tag:\s*(.+?)[,\)]/gi;
-var cmd = 'git log --tags --simplify-by-decoration --pretty=format:"%d"';
+var cmd = 'git tag --sort version:refname';
 
 module.exports = function(callback) {
   exec(cmd, function(err, data) {
@@ -12,16 +11,16 @@ module.exports = function(callback) {
     }
 
     var tags = [];
+    var tag;
+    var splittedData = data.split('\n');
+    var i;
 
-    data.split('\n').forEach(function(decorations) {
-      var match;
-      while (match = regex.exec(decorations)) {
-        var tag = match[1];
-        if (semverValid(tag)) {
-          tags.push(tag);
-        }
+    for (i = splittedData.length - 1; i >= 0 ; i--) {
+      tag = splittedData[i];
+      if (semverValid(tag)) {
+        tags.push(tag);
       }
-    });
+    }
 
     callback(null, tags);
   });
