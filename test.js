@@ -11,9 +11,9 @@ shell.mkdir('tmp');
 shell.cd('tmp');
 shell.exec('git init');
 
-it('should error if no commits found', function(done) {
-  gitSemverTags(function(err) {
-    assert(err);
+it('should get empty list if no commits found', function(done) {
+  gitSemverTags(function(err, tags) {
+    assert(tags, []);
 
     writeFileSync('test1', '');
 
