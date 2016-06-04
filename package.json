@@ -11,6 +11,7 @@
   "repository": "stevemao/git-semver-tags",
   "license": "MIT",
   "files": [
+    "lib",
     "index.js",
     "cli.js"
   ],
