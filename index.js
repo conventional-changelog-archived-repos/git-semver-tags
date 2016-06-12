@@ -19,6 +19,7 @@ function gitSemverTags(callback) {
 
     // Get a list of commits
     getCommits(repository, function(error, commits) {
+      /* istanbul ignore if */
       if (error) {
         return callback(error);
       }
