@@ -20,7 +20,7 @@ describe('find-index-by-hash', function() {
 
     equal(actual, expected);
   });
-  
+
   it('should return the first match index', function() {
     var actual = findIndexByHash([
       {hash: 1},
@@ -31,7 +31,7 @@ describe('find-index-by-hash', function() {
     equal(actual, expected);
   });
 });
-  
+
 describe('git-semver-tags', function() {
   it('should error if no commits found', function(done) {
     gitSemverTags(function(err) {
