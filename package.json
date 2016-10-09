@@ -11,6 +11,7 @@
   "repository": "stevemao/git-semver-tags",
   "license": "MIT",
   "files": [
+    "lib",
     "index.js",
     "cli.js"
   ],
@@ -23,6 +24,10 @@
     "git"
   ],
   "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "git-fs-repo": "0.0.5",
+    "git-parse-human": "0.0.1",
+    "git-walk-refs": "0.0.2",
     "meow": "^3.3.0",
     "semver": "^5.0.1"
   },
@@ -37,7 +42,7 @@
   },
   "scripts": {
     "coverage": "istanbul cover _mocha -- -R spec && rm -rf ./coverage",
-    "lint": "jshint *.js --exclude node_modules && jscs *.js",
+    "lint": "jshint **/*.js --exclude node_modules && jscs *.js",
     "test": "npm run-script lint && mocha --timeout 10000"
   },
   "bin": {
