@@ -113,3 +113,18 @@ it('should work with empty commit', function(done) {
     done();
   });
 });
+
+// see: https://github.com/conventional-changelog/standard-version/issues/123
+it('should return tags pointing to squashed branches', function(done) {
+  shell.exec('git checkout -b delete-me');
+  gitDummyCommit('empty commit1');
+  shell.exec('git tag v1.2.0');
+  shell.exec('git checkout master');
+  shell.exec('git branch -D delete-me');
+
+  gitSemverTags(function(err, tags) {
+    equal(tags, ['v1.2.0', 'v1.1.0']);
+
+    done();
+  });
+});

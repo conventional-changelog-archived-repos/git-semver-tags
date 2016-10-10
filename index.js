@@ -2,7 +2,7 @@
 var exec = require('child_process').exec;
 var semverValid = require('semver').valid;
 var regex = /tag:\s*(.+?)[,\)]/gi;
-var cmd = 'git log --decorate --no-color';
+var cmd = 'git log --all --date-order --decorate --no-color';
 
 module.exports = function(callback) {
   exec(cmd, {

@@ -2,8 +2,13 @@
 
 > Get all git semver tags of your repository in reverse chronological order
 
-*Note:* since lightweight tags do not store date information, the date of a tag is the date of the commit that is tagged on. If two tags on one commit, the order is not guaranteed.
+_*Note:* since lightweight tags do not store date information, the date of a tag is the date of the commit that it is tagged on. If two tags are placed on one commit, the order is not guaranteed._
 
+## How it works
+
+_git-semver-tags_ runs `git log --all --date-order` to fetch and parse a reverse-chronological list of
+semver tags. By using `--all`, tags are returned regardless of whether or not the commit they are
+attached to has been squashed.
 
 ## Install
 
